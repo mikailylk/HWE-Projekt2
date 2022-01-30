@@ -40,7 +40,7 @@ void refreshLEDStatusTest3()
 
 
 // Test-Programm für Ansteuerung der LEDs, außer LED0 und LED5 (Test 4)
-// auskommetieren für Test4
+// auskommentieren für Test4
 /*
 void refreshLEDStatusTest4()
 {

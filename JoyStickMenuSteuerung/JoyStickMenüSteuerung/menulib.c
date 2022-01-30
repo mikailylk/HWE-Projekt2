@@ -10,11 +10,11 @@
 #include "zkslibdisplay.h"
 #include <stdio.h>
 
-// ***********************START: Public Variablen (NICHT VERÄNDERN)**********************
-unsigned char countAuswahl = 0; // Auswahl 1,2,3, ...hochzählen bis maximal Auswahl
-unsigned char countZeile = 0;	// auf welcher Zeile befindet sich der Cursor: z.B. LED0 oder LED1 ... hochzählen (0..Zeile 1, 2...Zeile 2)
-unsigned char countSpalte = 0;	// ist der Cursor auf der Auswahl oder den Zuständen
-// ***********************ENDE: Public Variablen (NICHT VERÄNDERN)**********************
+// ***********************START: Public Variablen (NICHT VERï¿½NDERN)**********************
+unsigned char countAuswahl = 0; // Auswahl 1,2,3, ...hochzï¿½hlen bis maximal Auswahl
+unsigned char countZeile = 0;	// auf welcher Zeile befindet sich der Cursor: z.B. LED0 oder LED1 ... hochzï¿½hlen (0..Zeile 1, 2...Zeile 2)
+unsigned char countSpalte = 0;	// ist der Cursor auf der Auswahl oder den Zustï¿½nden
+// ***********************ENDE: Public Variablen (NICHT VERï¿½NDERN)**********************
 
 // Display je nach Auswahlseite und Zustand aktualisieren
 void refreshDisplay()
@@ -36,27 +36,27 @@ void refreshDisplay()
 
 void changeMenu()
 {
-	// Zum Prüfen ob z.B. schon einmal nach rechts navigiert wurde,
+	// Zum Prï¿½fen ob z.B. schon einmal nach rechts navigiert wurde,
 	// wenn ja, nicht mehr nach rechts navigieren und warten bis untere grenze unterschritten
-	// (ungefähr wenn Joystick in der Mitte)
+	// (ungefï¿½hr wenn Joystick in der Mitte, beim Verlassen der Trigger-Grenze)
 	static unsigned char MovedLeft = 0;
 	static unsigned char MovedRight = 0;
 	static unsigned char MovedUp = 0;
 	static unsigned char MovedDown = 0;
 	static unsigned char JoyStickPressed = 0;
 	
-	unsigned char JoyZPos = 0; // nichtgedrückt (default)
-	// Joystick gedrückt abfragen
-	JoyZPos = JoyPos(0x01); // Ist Joystick gedrückt oder losgelassen?
+	unsigned char JoyZPos = 0; // nichtgedrï¿½ckt (default)
+	// Joystick gedrï¿½ckt abfragen
+	JoyZPos = JoyPos(0x01); // Ist Joystick gedrï¿½ckt oder losgelassen?
 	
 	// allgemeine JoyStickPosition ermitteln (1 = Oben, ...)
 	unsigned char joyStickPosition = 0;
 	joyStickPosition = JoyPos(0x00);
 	
-	// Bei AuswahlMenü nach rechts o. links navigieren, wenn Joystick nicht gedrückt ist bzw. gedrückt wurde
+	// Bei AuswahlMenï¿½ nach rechts o. links navigieren, wenn Joystick nicht gedrï¿½ckt ist bzw. gedrï¿½ckt wurde
 	if(JoyZPos != 1 && JoyStickPressed == 0 && countSpalte == 0)
 	{
-		// Prüfen ob schon 1 mal nach rechts und links nicht navigiert wurde
+		// Prï¿½fen ob schon 1 mal nach rechts und links nicht navigiert wurde
 		if(MovedRight != 1 && MovedLeft != 1)
 		{
 			if(joyStickPosition == RECHTS && countAuswahl < ANZAHL_AUSWAHL-1)
@@ -81,37 +81,37 @@ void changeMenu()
 		refreshDisplay();
 	}
 	
-	// Wird JoyStick gedrückt?
+	// Wird JoyStick gedrï¿½ckt?
 	if(JoyZPos != 0 && JoyStickPressed == 0)
 	{
-		JoyStickPressed = 1; // JoyStickStatus auf "wurde gedrückt" ändern
+		JoyStickPressed = 1; // JoyStickStatus auf "wurde gedrï¿½ckt" ï¿½ndern
 	}
 	
-	// JoyStick wurde gedrückt und losgelassen --> Als gedrückt Werten (Anzahl der Gedrückten aufzählen)
+	// JoyStick wurde gedrï¿½ckt und losgelassen --> Als gedrï¿½ckt Werten (Anzahl der Gedrï¿½ckten aufzï¿½hlen)
 	if(JoyZPos != 1 && JoyStickPressed == 1)
 	{
 		if(countSpalte < 1)
 		{
-			countSpalte++; // 1. mal gedrückt
+			countSpalte++; // 1. mal gedrï¿½ckt
 			MovedRight = 0;
 			MovedLeft = 0;
 		}
-		else // mehr als 1 oder zum 2. mal gedrückt --> countSpalte (Anzahl Drückungen = 0)
+		else // mehr als 1 oder zum 2. mal gedrï¿½ckt --> countSpalte (Anzahl Drï¿½ckungen = 0)
 		{
-			// zurück zur Auswahl springen
+			// zurï¿½ck zur Auswahl springen
 			countSpalte = 0;
 			countZeile = 0;
 			
-			// Alle andere möglichen PositionenStatusabfragen rücksetzen (Fehler zu vermeiden)
+			// Alle andere mï¿½glichen PositionenStatusabfragen rï¿½cksetzen (Fehler zu vermeiden)
 			MovedRight = 0;
 			MovedLeft = 0;
 			MovedUp = 0;
 			MovedDown = 0;
 		}
-		JoyStickPressed = 0; // JoyStickStatus auf "nicht gedrückt" ändern
+		JoyStickPressed = 0; // JoyStickStatus auf "nicht gedrï¿½ckt" ï¿½ndern
 	}
 
-	// JoyStick wurde zum 1. Mal gedrückt bzw. eine Auswahl wurde getroffen
+	// JoyStick wurde zum 1. Mal gedrï¿½ckt bzw. eine Auswahl wurde getroffen
 	if (countSpalte == 1 && JoyZPos != 1)
 	{
 		// Auf welcher Zeile befindet sich der Cursor ?
