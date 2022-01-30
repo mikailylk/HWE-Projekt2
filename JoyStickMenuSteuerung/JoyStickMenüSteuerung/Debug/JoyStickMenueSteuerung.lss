@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000aee  00000000  00000000  00002d16  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000f6b  00000000  00000000  00003804  2**0
+  8 .debug_line   00000f6a  00000000  00000000  00003804  2**0
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  000003e0  00000000  00000000  00004770  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000071c  00000000  00000000  00004b50  2**0
+ 10 .debug_str    0000079b  00000000  00000000  00004b50  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00001508  00000000  00000000  0000526c  2**0
+ 11 .debug_loc    00001508  00000000  00000000  000052eb  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000108  00000000  00000000  00006774  2**0
+ 12 .debug_ranges 00000108  00000000  00000000  000067f3  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -361,8 +361,8 @@ unsigned char JoyPos(unsigned char GetTasterStatus)
  19e:	08 95       	ret
 
 000001a0 <refreshDisplay>:
-unsigned char countSpalte = 0;	// ist der Cursor auf der Auswahl oder den Zuständen
-// ***********************ENDE: Public Variablen (NICHT VERÄNDERN)**********************
+unsigned char countSpalte = 0;	// ist der Cursor auf der Auswahl oder den Zustï¿½nden
+// ***********************ENDE: Public Variablen (NICHT VERï¿½NDERN)**********************
 
 // Display je nach Auswahlseite und Zustand aktualisieren
 void refreshDisplay()
@@ -555,9 +555,9 @@ void changeMenu()
 	static unsigned char MovedDown = 0;
 	static unsigned char JoyStickPressed = 0;
 	
-	unsigned char JoyZPos = 0; // nichtgedrückt (default)
-	// Joystick gedrückt abfragen
-	JoyZPos = JoyPos(0x01); // Ist Joystick gedrückt oder losgelassen?
+	unsigned char JoyZPos = 0; // nichtgedrï¿½ckt (default)
+	// Joystick gedrï¿½ckt abfragen
+	JoyZPos = JoyPos(0x01); // Ist Joystick gedrï¿½ckt oder losgelassen?
  2ce:	81 e0       	ldi	r24, 0x01	; 1
  2d0:	0e 94 9c 00 	call	0x138	; 0x138 <JoyPos>
  2d4:	d8 2f       	mov	r29, r24
@@ -569,7 +569,7 @@ void changeMenu()
  2d8:	0e 94 9c 00 	call	0x138	; 0x138 <JoyPos>
  2dc:	c8 2f       	mov	r28, r24
 	
-	// Bei AuswahlMenü nach rechts o. links navigieren, wenn Joystick nicht gedrückt ist bzw. gedrückt wurde
+	// Bei AuswahlMenï¿½ nach rechts o. links navigieren, wenn Joystick nicht gedrï¿½ckt ist bzw. gedrï¿½ckt wurde
 	if(JoyZPos != 1 && JoyStickPressed == 0 && countSpalte == 0)
  2de:	d1 30       	cpi	r29, 0x01	; 1
  2e0:	09 f4       	brne	.+2      	; 0x2e4 <changeMenu+0x1a>
@@ -581,7 +581,7 @@ void changeMenu()
  2f0:	81 11       	cpse	r24, r1
  2f2:	e9 c0       	rjmp	.+466    	; 0x4c6 <__stack+0x67>
 	{
-		// Prüfen ob schon 1 mal nach rechts und links nicht navigiert wurde
+		// Prï¿½fen ob schon 1 mal nach rechts und links nicht navigiert wurde
 		if(MovedRight != 1 && MovedLeft != 1)
  2f4:	80 91 b3 00 	lds	r24, 0x00B3	; 0x8000b3 <MovedRight.1845>
  2f8:	81 30       	cpi	r24, 0x01	; 1
@@ -638,16 +638,16 @@ void changeMenu()
  346:	0e 94 d0 00 	call	0x1a0	; 0x1a0 <refreshDisplay>
 	}
 	
-	// Wird JoyStick gedrückt?
+	// Wird JoyStick gedrï¿½ckt?
 	if(JoyZPos != 0 && JoyStickPressed == 0)
  34a:	dd 23       	and	r29, r29
  34c:	21 f0       	breq	.+8      	; 0x356 <changeMenu+0x8c>
  34e:	d1 c0       	rjmp	.+418    	; 0x4f2 <__stack+0x93>
 	{
-		JoyStickPressed = 1; // JoyStickStatus auf "wurde gedrückt" ändern
+		JoyStickPressed = 1; // JoyStickStatus auf "wurde gedrï¿½ckt" ï¿½ndern
 	}
 	
-	// JoyStick wurde gedrückt und losgelassen --> Als gedrückt Werten (Anzahl der Gedrückten aufzählen)
+	// JoyStick wurde gedrï¿½ckt und losgelassen --> Als gedrï¿½ckt Werten (Anzahl der Gedrï¿½ckten aufzï¿½hlen)
 	if(JoyZPos != 1 && JoyStickPressed == 1)
  350:	d1 30       	cpi	r29, 0x01	; 1
  352:	09 f4       	brne	.+2      	; 0x356 <changeMenu+0x8c>
@@ -662,7 +662,7 @@ void changeMenu()
  364:	81 11       	cpse	r24, r1
  366:	08 c0       	rjmp	.+16     	; 0x378 <changeMenu+0xae>
 		{
-			countSpalte++; // 1. mal gedrückt
+			countSpalte++; // 1. mal gedrï¿½ckt
  368:	81 e0       	ldi	r24, 0x01	; 1
  36a:	80 93 b5 00 	sts	0x00B5, r24	; 0x8000b5 <countSpalte>
 			MovedRight = 0;
@@ -671,15 +671,15 @@ void changeMenu()
  372:	10 92 b2 00 	sts	0x00B2, r1	; 0x8000b2 <MovedLeft.1844>
  376:	0c c0       	rjmp	.+24     	; 0x390 <changeMenu+0xc6>
 		}
-		else // mehr als 1 oder zum 2. mal gedrückt --> countSpalte (Anzahl Drückungen = 0)
+		else // mehr als 1 oder zum 2. mal gedrï¿½ckt --> countSpalte (Anzahl Drï¿½ckungen = 0)
 		{
-			// zurück zur Auswahl springen
+			// zurï¿½ck zur Auswahl springen
 			countSpalte = 0;
  378:	10 92 b5 00 	sts	0x00B5, r1	; 0x8000b5 <countSpalte>
 			countZeile = 0;
  37c:	10 92 b6 00 	sts	0x00B6, r1	; 0x8000b6 <countZeile>
 			
-			// Alle andere möglichen PositionenStatusabfragen rücksetzen (Fehler zu vermeiden)
+			// Alle andere mï¿½glichen PositionenStatusabfragen rï¿½cksetzen (Fehler zu vermeiden)
 			MovedRight = 0;
  380:	10 92 b3 00 	sts	0x00B3, r1	; 0x8000b3 <MovedRight.1845>
 			MovedLeft = 0;
@@ -689,11 +689,11 @@ void changeMenu()
 			MovedDown = 0;
  38c:	10 92 b0 00 	sts	0x00B0, r1	; 0x8000b0 <__data_end>
 		}
-		JoyStickPressed = 0; // JoyStickStatus auf "nicht gedrückt" ändern
+		JoyStickPressed = 0; // JoyStickStatus auf "nicht gedrï¿½ckt" ï¿½ndern
  390:	10 92 b4 00 	sts	0x00B4, r1	; 0x8000b4 <JoyStickPressed.1848>
  394:	9c c0       	rjmp	.+312    	; 0x4ce <__stack+0x6f>
 
-	// JoyStick wurde zum 1. Mal gedrückt bzw. eine Auswahl wurde getroffen
+	// JoyStick wurde zum 1. Mal gedrï¿½ckt bzw. eine Auswahl wurde getroffen
 	if (countSpalte == 1 && JoyZPos != 1)
 	{
 		// Auf welcher Zeile befindet sich der Cursor ?
@@ -884,17 +884,17 @@ void changeMenu()
 		refreshDisplay();
 	}
 	
-	// Wird JoyStick gedrückt?
+	// Wird JoyStick gedrï¿½ckt?
 	if(JoyZPos != 0 && JoyStickPressed == 0)
  4c6:	dd 23       	and	r29, r29
  4c8:	09 f4       	brne	.+2      	; 0x4cc <__stack+0x6d>
  4ca:	45 cf       	rjmp	.-374    	; 0x356 <changeMenu+0x8c>
  4cc:	49 cf       	rjmp	.-366    	; 0x360 <changeMenu+0x96>
 		}
-		JoyStickPressed = 0; // JoyStickStatus auf "nicht gedrückt" ändern
+		JoyStickPressed = 0; // JoyStickStatus auf "nicht gedrï¿½ckt" ï¿½ndern
 	}
 
-	// JoyStick wurde zum 1. Mal gedrückt bzw. eine Auswahl wurde getroffen
+	// JoyStick wurde zum 1. Mal gedrï¿½ckt bzw. eine Auswahl wurde getroffen
 	if (countSpalte == 1 && JoyZPos != 1)
  4ce:	80 91 b5 00 	lds	r24, 0x00B5	; 0x8000b5 <countSpalte>
  4d2:	81 30       	cpi	r24, 0x01	; 1
@@ -934,7 +934,7 @@ void changeMenu()
 		refreshDisplay();
 	}
 	
-	// Wird JoyStick gedrückt?
+	// Wird JoyStick gedrï¿½ckt?
 	if(JoyZPos != 0 && JoyStickPressed == 0)
  4f2:	80 91 b4 00 	lds	r24, 0x00B4	; 0x8000b4 <JoyStickPressed.1848>
  4f6:	88 23       	and	r24, r24
@@ -942,7 +942,7 @@ void changeMenu()
  4fa:	32 cf       	rjmp	.-412    	; 0x360 <changeMenu+0x96>
  4fc:	29 cf       	rjmp	.-430    	; 0x350 <changeMenu+0x86>
 	{
-		JoyStickPressed = 1; // JoyStickStatus auf "wurde gedrückt" ändern
+		JoyStickPressed = 1; // JoyStickStatus auf "wurde gedrï¿½ckt" ï¿½ndern
  4fe:	81 e0       	ldi	r24, 0x01	; 1
  500:	80 93 b4 00 	sts	0x00B4, r24	; 0x8000b4 <JoyStickPressed.1848>
  504:	12 c0       	rjmp	.+36     	; 0x52a <__stack+0xcb>
@@ -950,7 +950,7 @@ void changeMenu()
 		refreshDisplay();
 	}
 	
-	// Wird JoyStick gedrückt?
+	// Wird JoyStick gedrï¿½ckt?
 	if(JoyZPos != 0 && JoyStickPressed == 0)
  506:	80 91 b4 00 	lds	r24, 0x00B4	; 0x8000b4 <JoyStickPressed.1848>
  50a:	81 11       	cpse	r24, r1
@@ -1016,9 +1016,9 @@ unsigned char getZeilenAnzahl(unsigned char Auswahl)
 
 00000550 <refreshLEDStatusTest3>:
 
-
 // Test-Programm fÃ¼r Ansteuerung aller LEDs (Test 3)
 // auskommetieren fÃ¼r Test3
+
 void refreshLEDStatusTest3()
 {
  550:	ef 92       	push	r14
@@ -1101,8 +1101,8 @@ void refreshLEDStatusTest3()
  5ba:	d9 07       	cpc	r29, r25
  5bc:	a4 f2       	brlt	.-88     	; 0x566 <refreshLEDStatusTest3+0x16>
  5be:	e3 94       	inc	r14
-// Test-Programm fÃ¼r Ansteuerung aller LEDs (Test 3)
 // auskommetieren fÃ¼r Test3
+
 void refreshLEDStatusTest3()
 {
 	unsigned char ledcount = 0;
@@ -1111,9 +1111,9 @@ void refreshLEDStatusTest3()
  5c2:	e8 16       	cp	r14, r24
  5c4:	19 f0       	breq	.+6      	; 0x5cc <refreshLEDStatusTest3+0x7c>
 
-
 // Test-Programm fÃ¼r Ansteuerung aller LEDs (Test 3)
 // auskommetieren fÃ¼r Test3
+
 void refreshLEDStatusTest3()
 {
  5c6:	c0 e0       	ldi	r28, 0x00	; 0
@@ -1171,12 +1171,6 @@ int main(void)
  5fc:	f5 cf       	rjmp	.-22     	; 0x5e8 <main+0xe>
 
 000005fe <_hw_zToLCD>:
-		{
-			printf(" %d ",_loc_DispData[ix]);
-			ix++;
-		}
-	}
-}
  5fe:	9b b3       	in	r25, 0x1b	; 27
  600:	9f 7a       	andi	r25, 0xAF	; 175
  602:	9b bb       	out	0x1b, r25	; 27
@@ -1417,77 +1411,31 @@ int main(void)
  7e0:	08 95       	ret
 
 000007e2 <display_Home>:
-
-// Den Cursor an die Position (0,0) verschieben
-void display_Home(void)
-{
-	// Aufruf der Low-Level Funktion
-	_hw_Home();
  7e2:	0e 94 47 03 	call	0x68e	; 0x68e <_hw_Home>
-	
-	// Die Datenpointer richtig setzen
-	_loc_X=0;
  7e6:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <_loc_X>
-	_loc_Y=0;
  7ea:	10 92 c0 00 	sts	0x00C0, r1	; 0x8000c0 <_loc_Y>
-	_loc_Ix=0;
  7ee:	10 92 c2 00 	sts	0x00C2, r1	; 0x8000c2 <_loc_Ix>
  7f2:	08 95       	ret
 
 000007f4 <display_Clear>:
-	uint8_t Cnt;
-	
-	// Alle Zeilen mit Spaces füllen
-	for(Cnt=0;Cnt<DISP_LINES;Cnt++)
-	{
-		_loc_ClearLine(Cnt);
  7f4:	80 e0       	ldi	r24, 0x00	; 0
  7f6:	0e 94 a5 03 	call	0x74a	; 0x74a <_loc_ClearLine>
  7fa:	81 e0       	ldi	r24, 0x01	; 1
  7fc:	0e 94 a5 03 	call	0x74a	; 0x74a <_loc_ClearLine>
-	}
-
-	// Den Memory Inhalt ausgeben
-	_loc_Refresh();
  800:	0e 94 b6 03 	call	0x76c	; 0x76c <_loc_Refresh>
-
-	// zuletzt wird der Cursor auf Anfang gesetzt
-	display_Home();
  804:	0e 94 f1 03 	call	0x7e2	; 0x7e2 <display_Home>
  808:	08 95       	ret
 
 0000080a <display_Init>:
-void display_Init(void)
-{
-	uint8_t Cnt;
-
-	// Intitialisieren des Controllers	
-	_hw_Init();
  80a:	0e 94 52 03 	call	0x6a4	; 0x6a4 <_hw_Init>
-	
-	// Initialisieren der internen Variablen und des internen Memories
-	for(Cnt=0;Cnt<DISP_LINES;Cnt++)
-	{
-		_loc_ClearLine(Cnt);
  80e:	80 e0       	ldi	r24, 0x00	; 0
  810:	0e 94 a5 03 	call	0x74a	; 0x74a <_loc_ClearLine>
  814:	81 e0       	ldi	r24, 0x01	; 1
  816:	0e 94 a5 03 	call	0x74a	; 0x74a <_loc_ClearLine>
-	}
-	
-	_loc_X=0;
  81a:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <_loc_X>
-	_loc_Y=0;
  81e:	10 92 c0 00 	sts	0x00C0, r1	; 0x8000c0 <_loc_Y>
-	_loc_Ix=0;
  822:	10 92 c2 00 	sts	0x00C2, r1	; 0x8000c2 <_loc_Ix>
-	
-	
-	// Konfigurieren des stdout Kanals
-#ifdef STDOUT_DISP	
-	display_Clear();
  826:	0e 94 fa 03 	call	0x7f4	; 0x7f4 <display_Clear>
-	stdout = &disp_str;	
  82a:	88 e8       	ldi	r24, 0x88	; 136
  82c:	90 e0       	ldi	r25, 0x00	; 0
  82e:	90 93 d6 00 	sts	0x00D6, r25	; 0x8000d6 <__iob+0x3>
@@ -1495,196 +1443,100 @@ void display_Init(void)
  836:	08 95       	ret
 
 00000838 <display_Pos>:
-// Den Cursor an eine beliebige Position im Display verschieben
-// Bei Überschreiten der Limite bleibt der Cursor unverändert
-// X-Position von links nach rechts, y-Position von oben nach unten
-// Zähler beginnt bei 0
-void display_Pos(unsigned char x, unsigned char y)
-{
  838:	cf 93       	push	r28
  83a:	df 93       	push	r29
-	if((x<DISP_COLS)&&(y<DISP_LINES))
  83c:	88 30       	cpi	r24, 0x08	; 8
  83e:	88 f4       	brcc	.+34     	; 0x862 <display_Pos+0x2a>
  840:	62 30       	cpi	r22, 0x02	; 2
  842:	78 f4       	brcc	.+30     	; 0x862 <display_Pos+0x2a>
  844:	d6 2f       	mov	r29, r22
  846:	c8 2f       	mov	r28, r24
-	{
-		// Aufruf der Low-Level Funktion
-		_hw_Pos(x,y);
  848:	0e 94 31 03 	call	0x662	; 0x662 <_hw_Pos>
-		
-		// Update der Datenpointer
-		_loc_Y=y;
  84c:	d0 93 c0 00 	sts	0x00C0, r29	; 0x8000c0 <_loc_Y>
-		_loc_X=x;
  850:	c0 93 c1 00 	sts	0x00C1, r28	; 0x8000c1 <_loc_X>
-		_loc_Ix=y*DISP_COLS+x;
  854:	8d 2f       	mov	r24, r29
  856:	88 0f       	add	r24, r24
  858:	88 0f       	add	r24, r24
  85a:	88 0f       	add	r24, r24
  85c:	8c 0f       	add	r24, r28
  85e:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <_loc_Ix>
-		
-	}
-	
-}
  862:	df 91       	pop	r29
  864:	cf 91       	pop	r28
  866:	08 95       	ret
 
 00000868 <display_CharToDisplay>:
-// Das Zeichen im Speicher eintragen
-// Wenn nötig, scrollen
-// Am Ende zeigen Pointer und HW-Pos auf das nächste freie Zeichen, d.h.
-// Die Inkrementierung und Prüfung erfolgt am Ende
-void display_CharToDisplay (uint8_t c)
-{
  868:	cf 93       	push	r28
  86a:	c8 2f       	mov	r28, r24
-	
-	switch (c)
  86c:	8a 30       	cpi	r24, 0x0A	; 10
  86e:	89 f0       	breq	.+34     	; 0x892 <display_CharToDisplay+0x2a>
  870:	8d 30       	cpi	r24, 0x0D	; 13
  872:	91 f5       	brne	.+100    	; 0x8d8 <display_CharToDisplay+0x70>
-	{
-		case ASCII_CR:
-			// Den Cursor auf den aktuellen Zeilenanfang verschieben ohne
-			// Zeilenvorschub
-			_loc_Ix-=_loc_X;
  874:	80 91 c2 00 	lds	r24, 0x00C2	; 0x8000c2 <_loc_Ix>
  878:	90 91 c1 00 	lds	r25, 0x00C1	; 0x8000c1 <_loc_X>
  87c:	89 1b       	sub	r24, r25
  87e:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <_loc_Ix>
-			_loc_X=0;
  882:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <_loc_X>
-			_hw_Pos(_loc_X,_loc_Y);
  886:	60 91 c0 00 	lds	r22, 0x00C0	; 0x8000c0 <_loc_Y>
  88a:	80 e0       	ldi	r24, 0x00	; 0
  88c:	0e 94 31 03 	call	0x662	; 0x662 <_hw_Pos>
-		break;
  890:	50 c0       	rjmp	.+160    	; 0x932 <display_CharToDisplay+0xca>
-		
-		case ASCII_LF:
-			// Den Cursor an den Beginn der nächsten Zeile verschieben
-			_loc_Y++;
  892:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <_loc_Y>
  896:	8f 5f       	subi	r24, 0xFF	; 255
  898:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <_loc_Y>
-			
-			// Display-Ende erreicht ?
-			if (_loc_Y>=DISP_LINES)
  89c:	82 30       	cpi	r24, 0x02	; 2
  89e:	58 f0       	brcs	.+22     	; 0x8b6 <display_CharToDisplay+0x4e>
-			{
-				_loc_ScrollUp();
  8a0:	0e 94 e2 03 	call	0x7c4	; 0x7c4 <_loc_ScrollUp>
-				_loc_X=0;
  8a4:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <_loc_X>
-				_loc_Y=DISP_LINES-1;
  8a8:	81 e0       	ldi	r24, 0x01	; 1
  8aa:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <_loc_Y>
-				_loc_Ix=DISP_LEN-DISP_COLS;
  8ae:	88 e0       	ldi	r24, 0x08	; 8
  8b0:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <_loc_Ix>
  8b4:	0a c0       	rjmp	.+20     	; 0x8ca <display_CharToDisplay+0x62>
-			}
-			else
-			{
-				_loc_Ix=(_loc_Ix+DISP_COLS)-_loc_X;
  8b6:	80 91 c2 00 	lds	r24, 0x00C2	; 0x8000c2 <_loc_Ix>
  8ba:	88 5f       	subi	r24, 0xF8	; 248
  8bc:	90 91 c1 00 	lds	r25, 0x00C1	; 0x8000c1 <_loc_X>
  8c0:	89 1b       	sub	r24, r25
  8c2:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <_loc_Ix>
-				_loc_X=0;
  8c6:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <_loc_X>
-			}
-			_hw_Pos(_loc_X,_loc_Y);
  8ca:	60 91 c0 00 	lds	r22, 0x00C0	; 0x8000c0 <_loc_Y>
  8ce:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <_loc_X>
  8d2:	0e 94 31 03 	call	0x662	; 0x662 <_hw_Pos>
-		break;
  8d6:	2d c0       	rjmp	.+90     	; 0x932 <display_CharToDisplay+0xca>
-			// Die Prüfung der Pointer und das Scrollen wird erst ausgeführt,
-			// wenn das nächste Zeichen ausgegeben werden soll. Damit wird verhindert,
-			// dass beim letzten Zeichen bereits die Zeile nach oben verschwindet.
-			
-			// Zeilenende erreicht ?
-			if (_loc_X>=DISP_COLS)
  8d8:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <_loc_X>
  8dc:	88 30       	cpi	r24, 0x08	; 8
  8de:	b8 f0       	brcs	.+46     	; 0x90e <display_CharToDisplay+0xa6>
-			{
-				_loc_Y++;
  8e0:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <_loc_Y>
  8e4:	8f 5f       	subi	r24, 0xFF	; 255
  8e6:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <_loc_Y>
-				_loc_X=0;
  8ea:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <_loc_X>
-				
-				// Display-Ende erreicht ?
-				if (_loc_Y>=DISP_LINES)
  8ee:	82 30       	cpi	r24, 0x02	; 2
  8f0:	40 f0       	brcs	.+16     	; 0x902 <display_CharToDisplay+0x9a>
-				{
-					_loc_ScrollUp();
  8f2:	0e 94 e2 03 	call	0x7c4	; 0x7c4 <_loc_ScrollUp>
-					_loc_Y=DISP_LINES-1;
  8f6:	81 e0       	ldi	r24, 0x01	; 1
  8f8:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <_loc_Y>
-					_loc_Ix=DISP_LEN-DISP_COLS;
  8fc:	88 e0       	ldi	r24, 0x08	; 8
  8fe:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <_loc_Ix>
-				}
-				_hw_Pos(_loc_X,_loc_Y);
  902:	60 91 c0 00 	lds	r22, 0x00C0	; 0x8000c0 <_loc_Y>
  906:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <_loc_X>
  90a:	0e 94 31 03 	call	0x662	; 0x662 <_hw_Pos>
-			}
-			
-			// Jetzt erfolgt die Ausgabe des Zeichens und die Speicherung im internen Mem
-			_hw_CharToDisplay(c);
  90e:	8c 2f       	mov	r24, r28
  910:	0e 94 9e 03 	call	0x73c	; 0x73c <_hw_CharToDisplay>
-			_loc_DispData[_loc_Ix]=c;			
  914:	80 91 c2 00 	lds	r24, 0x00C2	; 0x8000c2 <_loc_Ix>
  918:	e8 2f       	mov	r30, r24
  91a:	f0 e0       	ldi	r31, 0x00	; 0
  91c:	ed 53       	subi	r30, 0x3D	; 61
  91e:	ff 4f       	sbci	r31, 0xFF	; 255
  920:	c0 83       	st	Z, r28
-	
-			// Inkremetieren der Pointer, danach werden die Werte geprüft
-			_loc_X++;
  922:	90 91 c1 00 	lds	r25, 0x00C1	; 0x8000c1 <_loc_X>
  926:	9f 5f       	subi	r25, 0xFF	; 255
  928:	90 93 c1 00 	sts	0x00C1, r25	; 0x8000c1 <_loc_X>
-			_loc_Ix++;
  92c:	8f 5f       	subi	r24, 0xFF	; 255
  92e:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <_loc_Ix>
-	}
-	
-	//_loc_PrintDispData();
-	// AM Ende der Funktion sind die Pointer aktuell aber noch nicht geprüft
-	
-}
  932:	cf 91       	pop	r28
  934:	08 95       	ret
 
 00000936 <_disp_put>:
-
-// Wrapper für die callbackfunktion zur AUsgabe eines Zeichens auf dem Display
-// Damit werden Compiler-Warnungen vermieden.
-int	_disp_put(char c, FILE * f)
-{
-	display_CharToDisplay(c);
  936:	0e 94 34 04 	call	0x868	; 0x868 <display_CharToDisplay>
-	return 0;
-}
  93a:	80 e0       	ldi	r24, 0x00	; 0
  93c:	90 e0       	ldi	r25, 0x00	; 0
  93e:	08 95       	ret

@@ -64,9 +64,10 @@
 	{"LED6","LED7"}
 	};
 	// ***********************ENDE: Public Variablen (ZUM GEBRAUCH ANPASSEN!!!)************************
-
+	
+	// für Test 4 (angepasst)
+	// für Test4 auskommentieren
 	/*
-		// für Test 4 (angepasst)
 	// Anzahl Zeilen pro Auswahlseite
 	#define AUSWAHL1ZEILEN 1 // Zeilenanzahl der jeweiligen Auswahl
 	#define AUSWAHL2ZEILEN 2
@@ -101,7 +102,6 @@
 	{"LED6","LED7"}
 	};
 	*/
-	
 	/* Funktion in der Arbeitsschleife aufrufen --> Zustände werden auf dem Display laufend aktualisiert (nach dem Aufruf ein Delay einbauen!!!) */
 	void changeMenu();
 	

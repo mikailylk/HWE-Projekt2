@@ -726,13 +726,13 @@ END GROUP
  .debug_abbrev  0x00000712      0x161 main.o
  .debug_abbrev  0x00000873      0x27b zkslibdisplay.o
 
-.debug_line     0x00000000      0xf6b
+.debug_line     0x00000000      0xf6a
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega16/avr5/crtatmega16.o
  .debug_line    0x00000115      0x1c2 joysticklib.o
  .debug_line    0x000002d7      0x35b menulib.o
- .debug_line    0x00000632      0x1e0 main.o
- .debug_line    0x00000812      0x759 zkslibdisplay.o
+ .debug_line    0x00000632      0x1df main.o
+ .debug_line    0x00000811      0x759 zkslibdisplay.o
 
 .debug_frame    0x00000000      0x3e0
  *(.debug_frame)
@@ -741,16 +741,16 @@ END GROUP
  .debug_frame   0x00000110       0x54 main.o
  .debug_frame   0x00000164      0x27c zkslibdisplay.o
 
-.debug_str      0x00000000      0x71c
+.debug_str      0x00000000      0x79b
  *(.debug_str)
  .debug_str     0x00000000      0x1af C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega16/avr5/crtatmega16.o
- .debug_str     0x000001af      0x1dd joysticklib.o
-                                0x211 (size before relaxing)
- .debug_str     0x0000038c      0x112 menulib.o
-                                0x2c9 (size before relaxing)
- .debug_str     0x0000049e       0x88 main.o
-                                0x2a1 (size before relaxing)
- .debug_str     0x00000526      0x1f6 zkslibdisplay.o
+ .debug_str     0x000001af      0x1da joysticklib.o
+                                0x20e (size before relaxing)
+ .debug_str     0x00000389      0x112 menulib.o
+                                0x2c6 (size before relaxing)
+ .debug_str     0x0000049b       0x88 main.o
+                                0x29e (size before relaxing)
+ .debug_str     0x00000523      0x278 zkslibdisplay.o
                                 0x421 (size before relaxing)
 
 .debug_loc      0x00000000     0x1508
